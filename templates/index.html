@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        Sistema de Detección de Intrusiones
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- PANEL IZQUIERDO -->
+    <div class="panel-izq">
+
+        <h1>Sistema de Detección de Intrusiones</h1>
+
+        <form method="POST">
+
+            <label>Duración</label>
+            <input type="number" name="duracion" required>
+
+            <label>Paquetes</label>
+            <input type="number" name="paquetes" required>
+
+            <label>Bytes</label>
+            <input type="number" name="bytes" required>
+
+            <label>Errores</label>
+            <input type="number" name="errores" required>
+
+            <button type="submit">Analizar Tráfico</button>
+
+        </form>
+
+        {% if resultado is not none %}
+
+        <div class="resultado">
+
+            <h2>
+                Probabilidad de Intrusión:
+                {{ resultado }} %
+            </h2>
+
+            <div class="barra">
+                <div
+                    class="progreso"
+                    style="width: {{ resultado }}%;"
+                >
+                    {{ resultado }} %
+                </div>
+            </div>
+
+            <h2>
+                Estado:
+                {{ estado }}
+            </h2>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- PANEL DERECHO -->
+    <div class="panel-der">
+
+        <h2>Historial de Predicciones</h2>
+
+        {% if historial %}
+
+        <table>
+
+            <tr>
+                <th>Duración</th>
+                <th>Paquetes</th>
+                <th>Bytes</th>
+                <th>Errores</th>
+                <th>Probabilidad</th>
+                <th>Estado</th>
+            </tr>
+
+            {% for item in historial %}
+
+            <tr>
+
+                <td>{{ item.duracion }}</td>
+
+                <td>{{ item.paquetes }}</td>
+
+                <td>{{ item.bytes }}</td>
+
+                <td>{{ item.errores }}</td>
+
+                <td>{{ item.probabilidad }}%</td>
+
+                <td>{{ item.estado }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No hay predicciones aún</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
