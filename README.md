@@ -29,7 +29,7 @@ Instalación
 
 Clonar el repositorio:
 
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/1010-jhon/SistemaDeteccion.git
 
 Entrar al proyecto:
 
