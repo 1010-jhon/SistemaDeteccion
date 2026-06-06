@@ -1,3 +1,4 @@
+/* Estilo general de la pagina */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f9;
@@ -44,6 +45,7 @@ button:hover {
     font-size: 20px;
     font-weight: bold;
 }
+/* Barra de probabilidad */
 .barra {
     width: 100%;
     background-color: #dddddd;
@@ -60,6 +62,7 @@ button:hover {
     font-weight: bold;
     background-color: #2196F3;
 }
+/* tabla de historial */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -81,7 +84,7 @@ th {
     gap: 20px;
     padding: 20px;
 }
-
+/* Panel de entrada de datos */
 .panel-izq {
     width: 40%;
     background: white;
@@ -89,7 +92,7 @@ th {
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
-
+/* Panel de historial */
 .panel-der {
     width: 60%;
     background: white;

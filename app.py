@@ -1,8 +1,10 @@
+# Aplicaion web para deteccion de intrusiones 
 from flask import Flask, render_template, request
 
 from src.predict import predecir
-
+# Crear aplicacion Flask
 app = Flask(__name__)
+# Historial de predicciones realizadas
 historial = []
 
 @app.route("/", methods=["GET", "POST"])
@@ -28,7 +30,7 @@ def inicio():
         errores = float(
             request.form["errores"]
         )
-
+        # Realizar la prediccion
         probabilidad = predecir(
             duracion,
             paquetes,
@@ -40,10 +42,12 @@ def inicio():
             probabilidad * 100,
             2
         )
+        # Clasificar trafico
         if resultado >= 50:
             estado = "INTRUCION DETECTADA"
         else:
             estado = "TRAFICO NORMAL"
+        # Guardar historial
         historial.append({
         "duracion": duracion,
         "paquetes": paquetes,

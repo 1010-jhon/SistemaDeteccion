@@ -1,9 +1,10 @@
+# Generacion del dataset sintetico para deteccion de intrucciones 
 import pandas as pd
 import random
 
 datos = []
 
-# Tráfico normal
+# Generacion de trafico normal
 for _ in range(700):
     datos.append([
         random.randint(5, 30),        # duración
@@ -13,7 +14,7 @@ for _ in range(700):
         0                             # normal
     ])
 
-# Intrusiones
+# Generacion de trafico de intrusiones
 for _ in range(300):
     datos.append([
         random.randint(1, 15),         # duración
@@ -33,7 +34,7 @@ df = pd.DataFrame(
         "intrusion"
     ]
 )
-
+# Mezclar registros aleatoriamente
 df = df.sample(frac=1).reset_index(drop=True)
 
 df.to_csv(

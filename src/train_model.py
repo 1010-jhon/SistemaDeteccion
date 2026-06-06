@@ -1,9 +1,10 @@
+# Entrenamiento del modelo de regresion logistica
 import pandas as pd
 import joblib
 
 from sklearn.linear_model import LogisticRegression
 
-# Leer datos
+# Leer dataset
 datos = pd.read_csv("data/intrusiones.csv")
 
 # Variables independientes
@@ -22,10 +23,10 @@ y = datos["intrusion"]
 # Crear modelo
 modelo = LogisticRegression()
 
-# Entrenar
+# Entrenar modelo
 modelo.fit(X, y)
 
-# Guardar modelo
+# Guardar modelo entrenado
 joblib.dump(
     modelo,
     "models/modelo.pkl"
